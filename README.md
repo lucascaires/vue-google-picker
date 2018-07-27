@@ -25,7 +25,7 @@ Example:
   </file-picker-button>
 </template>
 <script>
-import FilePickerButton from '../../vue-google-picker'
+import FilePickerButton from 'vue-google-picker'
 export default {
   components: {
     FilePickerButton
