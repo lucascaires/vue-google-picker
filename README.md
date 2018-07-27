@@ -18,7 +18,7 @@ Include the Google API Loader in your static file
 
 # Use
 Example:
-```
+```HTML
 <template>
   <file-picker-button :config="gConfig" @picked="showDetails">
     Open Google Drive Dialog
