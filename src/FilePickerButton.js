@@ -25,14 +25,18 @@ export default {
     },
     createPicker () {
       if (this.pickerApiLoaded && this.oauthToken) {
-        const picker = new google.picker.PickerBuilder().
-            addView(google.picker.ViewId.DOCS).
-            setOAuthToken(this.oauthToken).
-            setDeveloperKey(this.config.developerKey).
-            setCallback(this.pickerCallback).
-            build()         
-        picker.setVisible(true);        
-
+        const pickerBuilder = new google.picker.PickerBuilder().
+          setOAuthToken(this.oauthToken).
+          setDeveloperKey(this.config.developerKey).
+          setCallback(this.pickerCallback)
+          
+        this.$emit('build', pickerBuilder)
+  
+        if (!this.$listeners.build)
+          pickerBuilder.addView(google.picker.ViewId.DOCS)
+            
+        const picker = pickerBuilder.build()
+        picker.setVisible(true)
       }
     },
     pickerCallback(data) {       
